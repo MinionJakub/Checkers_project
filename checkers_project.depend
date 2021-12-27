@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1640207063 source:/home/minion/Documents/languageC/checkers_project/main.c
+	<stdio.h>
+	<stdlib.h>
+	"draw_in_command_console.h"
+	"checkers_rules_and_logic.h"
+
+1640206675 source:/home/minion/Documents/languageC/checkers_project/draw_in_command_console.c
+	<stdio.h>
+	<stdlib.h>
+	"draw_in_command_console.h"
+	"checkers_rules_and_logic.h"
+
+1640205829 /home/minion/Documents/languageC/checkers_project/draw_in_command_console.h
+
+1640203857 /home/minion/Documents/languageC/checkers_project/checkers_rules_and_logic.h
+
+1640203811 source:/home/minion/Documents/languageC/checkers_project/checkers_rules_and_logic.c
+	<stdio.h>
+	<stdlib.h>
+	"checkers_rules_and_logic.h"
+
+1640610470 source:/home/minion/Documents/checkers_project/main.c
+	<stdio.h>
+	<stdlib.h>
+	"draw_in_command_console.h"
+	"checkers_rules_and_logic.h"
+
+1640609925 /home/minion/Documents/checkers_project/draw_in_command_console.h
+
+1640610418 /home/minion/Documents/checkers_project/checkers_rules_and_logic.h
+
+1640610408 source:/home/minion/Documents/checkers_project/checkers_rules_and_logic.c
+	<stdio.h>
+	<stdlib.h>
+	"checkers_rules_and_logic.h"
+
+1640610232 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
+	<stdio.h>
+	<stdlib.h>
+	"draw_in_command_console.h"
+	"checkers_rules_and_logic.h"
+	<unistd.h>
+	<time.h>
+
