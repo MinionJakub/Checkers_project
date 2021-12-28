@@ -12,8 +12,8 @@
 // bottom_lane = "\uFF3F";
 
 void draw_map_of_game(int **map_of_game,int length_of_map, int size_of_line){
-    /*#ifdef __linux__
-        system("gsettings set org.gnome.desktop.interface text-scaling-factor 2");
+    #ifdef __linux__
+        system("clear");
     #endif // __linux__*/
     for (int i = 0; i < length_of_map; i++){
         printf("%d ",8-i);
@@ -44,7 +44,6 @@ void show_legal_moves(int legal_move[][4], int legal_attack[][4],int what_number
         for (int i = 0; i < what_number_legal_attacks; i++){
             putchar('A'+legal_attack[i][0]);
             putchar('8'-legal_attack[i][1]);
-            putchar('x');
             putchar('A'+legal_attack[i][2]);
             putchar('8'-legal_attack[i][3]);
             putchar('\n');
