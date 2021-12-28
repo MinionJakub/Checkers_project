@@ -14,5 +14,8 @@ int main()
     int whose_turn = -1;
     legal_action(board,legal_attack,legal_move,8,&how_many_moves,&how_many_attacks,whose_turn);
     show_legal_moves(legal_move,legal_attack,how_many_moves,how_many_attacks);
-    return 0;
+    move_action(board,legal_move[0]);
+    putchar('\n');
+    draw_map_of_game(board,8,8);
+    exit (0);
 }

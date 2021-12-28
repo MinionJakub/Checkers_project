@@ -5,8 +5,8 @@
 #include <unistd.h>
 #include <time.h>
 
-const int king_piece_white = 0x94;
-const int king_piece_black = 0x9A;
+// king_piece_white = "\u2654";
+// king_piece_black = "\u265A";
 // man_piece_white = "\u2659";
 // man_piece_black = "\u265F";
 // bottom_lane = "\uFF3F";
@@ -21,8 +21,8 @@ void draw_map_of_game(int **map_of_game,int length_of_map, int size_of_line){
             if(map_of_game[i][j] == 0)printf("_");
             else if(map_of_game[i][j] == 1) printf("\u2659");
             else if(map_of_game[i][j]==-1) printf("\u265F");
-            else if (map_of_game[i][j]==2)putchar(king_piece_white);
-            else if (map_of_game[i][j]==-2)putchar(king_piece_black);
+            else if (map_of_game[i][j]==2) printf("\u2654");
+            else if (map_of_game[i][j]==-2)printf("\u265A");
         }
         putchar('\n');
     }
