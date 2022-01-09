@@ -26,7 +26,6 @@ int **initiate(){
 }
 
 
-
 void legal_action(int **board, int legal_attack[][4], int legal_move[][4], int size_of_board, int *what_number_legal_moves, int *what_number_legal_attacks,int whose_action){
     *what_number_legal_moves = 0;
     *what_number_legal_attacks = 0;
@@ -150,6 +149,42 @@ void legal_action(int **board, int legal_attack[][4], int legal_move[][4], int s
                     *what_number_legal_attacks += 1;
                 }
             }
+        }
+    }
+}
+
+void  continue_attack(int **board, int row, int column, int legal_attack[][4],int *what_number_legal_attacks, int what_type_attack){
+    *what_number_legal_attacks = 0;
+    if (what_type_attack == 1){
+        if(row+1 < 7 && column-1 > 0 && board[row+1][column-1]*board[row][column] < 0 && board[row+2][column-2] == 0){
+            legal_attack[*what_number_legal_attacks][0] = column;
+            legal_attack[*what_number_legal_attacks][1] = row;
+            legal_attack[*what_number_legal_attacks][2] = column - 2;
+            legal_attack[*what_number_legal_attacks][3] = row + 2;
+            *what_number_legal_attacks += 1;
+        }
+        if(row+1 < 7 && column+1 < 7 && board[row+1][column+1]*board[row][column] < 0 && board[row+2][column+2] == 0){
+            legal_attack[*what_number_legal_attacks][0] = column;
+            legal_attack[*what_number_legal_attacks][1] = row;
+            legal_attack[*what_number_legal_attacks][2] = column + 2;
+            legal_attack[*what_number_legal_attacks][3] = row + 2;
+            *what_number_legal_attacks += 1;
+        }
+    }
+    if (what_type_attack == -1){
+        if(row-1 > 0 && column-1 > 0 && board[row-1][column-1]*board[row][column] < 0 && board[row-2][column-2] == 0){
+            legal_attack[*what_number_legal_attacks][0] = column;
+            legal_attack[*what_number_legal_attacks][1] = row;
+            legal_attack[*what_number_legal_attacks][2] = column - 2;
+            legal_attack[*what_number_legal_attacks][3] = row - 2;
+            *what_number_legal_attacks += 1;
+        }
+        if(row-1 > 0 && column+1 < 7 && board[row-1][column+1]*board[row][column] < 0 && board[row-2][column+2] == 0){
+            legal_attack[*what_number_legal_attacks][0] = column;
+            legal_attack[*what_number_legal_attacks][1] = row;
+            legal_attack[*what_number_legal_attacks][2] = column + 2;
+            legal_attack[*what_number_legal_attacks][3] = row - 2;
+            *what_number_legal_attacks += 1;
         }
     }
 }
