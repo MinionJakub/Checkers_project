@@ -10,4 +10,5 @@ void who_is_winner(int **board,int size_of_board,int *end_the_game);
 int *read_move (int legal_attack[][4], int legal_move[][4],int what_number_legal_moves, int what_number_legal_attacks, int *correctness,char *entry);
 char *read_entry(int *operation);
 void continue_attack(int **board, int row, int column, int legal_attack[][4],int *what_number_legal_attacks, int what_type_attack);
+int value_of_board(int **board,int size_of_board);
 #endif // CHECKERS_RULES_AND_LOGIC_H_INCLUDED

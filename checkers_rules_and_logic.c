@@ -31,29 +31,29 @@ void legal_action(int **board, int legal_attack[][4], int legal_move[][4], int s
     *what_number_legal_attacks = 0;
     for(int row = 0; row < size_of_board; row++){
         for(int column = 0; column < size_of_board;column++){
-            if(board[row][column] == 1 && whose_action == 1){
-                if(row+1 <= 7 &&  column-1 >= 0 && board[row+1][column-1] == 0){
+            if(board[row][column] == 1 && whose_action == 1){ //white move and attack
+                if(row+1 <= 7 &&  column-1 >= 0 && board[row+1][column-1] == 0){ //left move
                     legal_move[*what_number_legal_moves][0] = column;
                     legal_move[*what_number_legal_moves][1] = row;
                     legal_move[*what_number_legal_moves][2] = column - 1;
                     legal_move[*what_number_legal_moves][3] = row + 1;
                     *what_number_legal_moves += 1;
                 }
-                if(row+1 <= 7 &&  column+1 <= 7 && board[row+1][column+1] == 0){
+                if(row+1 <= 7 &&  column+1 <= 7 && board[row+1][column+1] == 0){ //right move
                     legal_move[*what_number_legal_moves][0] = column;
                     legal_move[*what_number_legal_moves][1] = row;
                     legal_move[*what_number_legal_moves][2] = column + 1;
                     legal_move[*what_number_legal_moves][3] = row + 1;
                     *what_number_legal_moves += 1;
                 }
-                if(row+1 < 7 && column-1 > 0 && board[row+1][column-1]*board[row][column] < 0 && board[row+2][column-2] == 0){
+                if(row+1 < 7 && column-1 > 0 && board[row+1][column-1]*board[row][column] < 0 && board[row+2][column-2] == 0){ //left attack
                     legal_attack[*what_number_legal_attacks][0] = column;
                     legal_attack[*what_number_legal_attacks][1] = row;
                     legal_attack[*what_number_legal_attacks][2] = column - 2;
                     legal_attack[*what_number_legal_attacks][3] = row + 2;
                     *what_number_legal_attacks += 1;
                 }
-                if(row+1 < 7 && column+1 < 7 && board[row+1][column+1]*board[row][column] < 0 && board[row+2][column+2] == 0){
+                if(row+1 < 7 && column+1 < 7 && board[row+1][column+1]*board[row][column] < 0 && board[row+2][column+2] == 0){ //right attack
                     legal_attack[*what_number_legal_attacks][0] = column;
                     legal_attack[*what_number_legal_attacks][1] = row;
                     legal_attack[*what_number_legal_attacks][2] = column + 2;
@@ -61,29 +61,29 @@ void legal_action(int **board, int legal_attack[][4], int legal_move[][4], int s
                     *what_number_legal_attacks += 1;
                 }
             }
-            else if(board[row][column] == -1 && whose_action == -1){
-                if(row-1 >= 0 &&  column-1 >= 0 && board[row-1][column-1] == 0){
+            else if(board[row][column] == -1 && whose_action == -1){ //black move
+                if(row-1 >= 0 &&  column-1 >= 0 && board[row-1][column-1] == 0){ // left move
                     legal_move[*what_number_legal_moves][0] = column;
                     legal_move[*what_number_legal_moves][1] = row;
                     legal_move[*what_number_legal_moves][2] = column - 1;
                     legal_move[*what_number_legal_moves][3] = row - 1;
                     *what_number_legal_moves += 1;
                 }
-                if(row-1 >= 0 &&  column+1 <= 7 && board[row-1][column+1] == 0){
+                if(row-1 >= 0 &&  column+1 <= 7 && board[row-1][column+1] == 0){ //right move
                     legal_move[*what_number_legal_moves][0] = column;
                     legal_move[*what_number_legal_moves][1] = row;
                     legal_move[*what_number_legal_moves][2] = column + 1;
                     legal_move[*what_number_legal_moves][3] = row - 1;
                     *what_number_legal_moves += 1;
                 }
-                if(row-1 > 0 && column-1 > 0 && board[row-1][column-1]*board[row][column] < 0 && board[row-2][column-2] == 0){
+                if(row-1 > 0 && column-1 > 0 && board[row-1][column-1]*board[row][column] < 0 && board[row-2][column-2] == 0){ //left attack
                     legal_attack[*what_number_legal_attacks][0] = column;
                     legal_attack[*what_number_legal_attacks][1] = row;
                     legal_attack[*what_number_legal_attacks][2] = column - 2;
                     legal_attack[*what_number_legal_attacks][3] = row - 2;
                     *what_number_legal_attacks += 1;
                 }
-                if(row-1 > 0 && column+1 < 7 && board[row-1][column+1]*board[row][column] < 0 && board[row-2][column+2] == 0){
+                if(row-1 > 0 && column+1 < 7 && board[row-1][column+1]*board[row][column] < 0 && board[row-2][column+2] == 0){//right move
                     legal_attack[*what_number_legal_attacks][0] = column;
                     legal_attack[*what_number_legal_attacks][1] = row;
                     legal_attack[*what_number_legal_attacks][2] = column + 2;
@@ -91,7 +91,7 @@ void legal_action(int **board, int legal_attack[][4], int legal_move[][4], int s
                     *what_number_legal_attacks += 1;
                 }
             }
-            else if(board[row][column] == 2 && whose_action*board[row][column] >= 0){
+            else if((board[row][column] == 2 || board[row][column] == -2) && whose_action*board[row][column] >= 0){ //hetman move
                 if(row-1 >= 0 &&  column-1 >= 0 && board[row-1][column-1] == 0){
                     legal_move[*what_number_legal_moves][0] = column;
                     legal_move[*what_number_legal_moves][1] = row;
@@ -270,12 +270,13 @@ int *read_move (int legal_attack[][4], int legal_move[][4],int what_number_legal
 }
 
 void dynamic_array_of_chars(char *array, int *size){
-    char *new_pointer = malloc(sizeof(char *)*(*size*2));
+    char *new_pointer = malloc(sizeof(char )*(*size*2));
     for(int i = 0; i < *size; i++){
         new_pointer[i] = array[i];
     }
     array = new_pointer;
     *size = *size * 2;
+    free(new_pointer);
 }
 
 void insert_to_dynamic_array(char *array, int *last_element, int *size, char what_to_insert){

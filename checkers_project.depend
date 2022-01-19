@@ -20,26 +20,34 @@
 	<stdlib.h>
 	"checkers_rules_and_logic.h"
 
-1640727203 source:/home/minion/Documents/checkers_project/main.c
+1642580904 source:/home/minion/Documents/checkers_project/main.c
 	<stdio.h>
 	<stdlib.h>
 	"draw_in_command_console.h"
 	"checkers_rules_and_logic.h"
 
-1640699379 /home/minion/Documents/checkers_project/draw_in_command_console.h
+1642580470 /home/minion/Documents/checkers_project/draw_in_command_console.h
 
-1641748235 /home/minion/Documents/checkers_project/checkers_rules_and_logic.h
+1642507915 /home/minion/Documents/checkers_project/checkers_rules_and_logic.h
 
-1641748236 source:/home/minion/Documents/checkers_project/checkers_rules_and_logic.c
+1641988495 source:/home/minion/Documents/checkers_project/checkers_rules_and_logic.c
 	<stdio.h>
 	<stdlib.h>
 	"checkers_rules_and_logic.h"
 
-1640727269 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
+1642580952 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
 	<stdio.h>
 	<stdlib.h>
 	"draw_in_command_console.h"
 	"checkers_rules_and_logic.h"
 	<unistd.h>
 	<time.h>
+
+1642580563 source:/home/minion/Documents/checkers_project/bot.c
+	<stdio.h>
+	<stdlib.h>
+	"bot.h"
+	"checkers_rules_and_logic.h"
+
+1641750379 /home/minion/Documents/checkers_project/bot.h
 

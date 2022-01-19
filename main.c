@@ -42,7 +42,7 @@ int main()
                         correctness = 0;
                         if(operation == 1) show_legal_moves(legal_move,legal_attack,how_many_moves,how_many_attacks);
                         else if(operation == 2){
-                            draw_end();
+                            draw_end(whose_turn*-1);
                             exit(0);
                         }
                         else{
@@ -63,6 +63,6 @@ int main()
         }
         who_is_winner(board,8,&end_the_game);
     }
-    draw_end();
+    draw_end(end_the_game);
     exit (0);
 }

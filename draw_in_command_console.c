@@ -59,9 +59,15 @@ void show_legal_moves(int legal_move[][4], int legal_attack[][4],int what_number
             putchar('\n');
     }
 }
-void draw_end(){
+void draw_end(int winner){
      #ifdef __linux__
         system("clear");
         system("gsettings reset org.gnome.desktop.interface text-scaling-factor");
     #endif // __linux_*/
+    if(winner > 0)printf("Upper player is a winner");
+    else if(winner < 0)printf("Bottom Player is a winner");
+    else printf("Remis\n");
+    #ifdef __linux__
+        system("sleep 1");
+    #endif // __linux__
 }
