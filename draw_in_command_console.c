@@ -14,7 +14,7 @@
 void draw_map_of_game(int **map_of_game,int length_of_map, int size_of_line){
     #ifdef __linux__
         system("clear");
-         system("gsettings set org.gnome.desktop.interface text-scaling-factor 2");
+        system("gsettings set org.gnome.desktop.interface text-scaling-factor 2");
     #endif // __linux__*/
     for (int i = 0; i < length_of_map; i++){
         printf("%d ",8-i);
