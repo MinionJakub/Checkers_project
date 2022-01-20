@@ -35,7 +35,7 @@
 	<stdlib.h>
 	"checkers_rules_and_logic.h"
 
-1642580952 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
+1642594477 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
 	<stdio.h>
 	<stdlib.h>
 	"draw_in_command_console.h"
@@ -43,11 +43,12 @@
 	<unistd.h>
 	<time.h>
 
-1642580563 source:/home/minion/Documents/checkers_project/bot.c
+1642684439 source:/home/minion/Documents/checkers_project/bot.c
 	<stdio.h>
 	<stdlib.h>
+	<time.h>
 	"bot.h"
 	"checkers_rules_and_logic.h"
 
-1641750379 /home/minion/Documents/checkers_project/bot.h
+1642596475 /home/minion/Documents/checkers_project/bot.h
 
