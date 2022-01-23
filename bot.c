@@ -23,6 +23,11 @@ int evaluation_of_move(int **board, int size_of_board, int whose_turn, int enemy
     legal_action(board,legal_attack,legal_move,size_of_board,&how_many_moves,&how_many_attacking_moves,whose_turn);
     int end_the_game = 0;
 
+    if(how_many_attacking_moves == 0 && how_many_moves == 0){
+        who_is_winner(board,8,&end_the_game);
+        return end_the_game*10000;
+    }
+
     if(how_many_attacking_moves){
         int max_val_for_actual_player = -10000;
         int actual_val;
@@ -95,7 +100,6 @@ int *bot_make_decision(int **board,int size_of_board,int whose_turn,int enemy_va
     legal_action(board,legal_attack,legal_move,size_of_board,&how_many_moves,&how_many_attacking_moves,whose_turn);
     int end_the_game = 0;
     int value_table[20];
-
     if(how_many_attacking_moves){
         int actual_val;
         int **copy_of_board;
