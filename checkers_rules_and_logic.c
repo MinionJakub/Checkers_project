@@ -318,3 +318,16 @@ char *read_entry(int *operation){
     *operation = 3;
     return entry;
 }
+
+char *read_entry_from_text(int *operation,char *text,int last_element){
+    if (last_element >= 9 && compare_arrays(text,show_moves,9)){
+        *operation = 1;
+        return entry;
+    }
+    if (last_element >= 9 && compare_arrays(text,surrender,9)){
+        *operation = 2;
+        return entry;
+    }
+    *operation = 3;
+    return entry;
+}

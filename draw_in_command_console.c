@@ -166,11 +166,6 @@ void PvComputer_console(){
             action = bot_make_decision(board,8,whose_turn,-1,1,10);
             if(how_many_attacks){
                 attack_action(board,action);
-                /*draw_map_of_game(board,8,8);
-                printf("\n%d %d %d %d",action[0],action[1],action[2],action[3]);
-                #ifdef __linux__
-                    system("sleep 5");
-                #endif // __linux__*/
                 int what_type_of_attack = -1;
                 if (action[1]-action[3] < 0) what_type_of_attack = 1;
                 continue_attack(board,action[3],action[2],legal_attack,&how_many_attacks,what_type_of_attack);

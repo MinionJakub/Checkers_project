@@ -1,0 +1,6 @@
+#ifndef DRAW_IN_SDL_H_INCLUDED
+#define DRAW_IN_SDL_H_INCLUDED
+
+
+
+#endif // DRAW_IN_SDL_H_INCLUDED
