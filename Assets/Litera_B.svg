@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 21.166666 21.166667"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="Litera_B.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     showguides="false"
+     units="px"
+     width="80px"
+     inkscape:zoom="2.5722563"
+     inkscape:cx="26.435935"
+     inkscape:cy="62.2022"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid125" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       aria-label="B"
+       transform="scale(1.0367778,0.96452678)"
+       id="text6949"
+       style="font-size:28.9438px;line-height:1.25;stroke-width:0.723598">
+      <path
+         d="m 6.0253088,11.579195 v 7.730595 h 4.5789992 q 2.303633,0 3.405985,-0.946892 1.116484,-0.961024 1.116484,-2.925472 0,-1.97858 -1.116484,-2.911339 -1.102352,-0.946892 -3.405985,-0.946892 z m 0,-8.6774867 V 9.2614299 H 10.25099 q 2.091642,0 3.109198,-0.7772993 1.031688,-0.791432 1.031688,-2.4025615 0,-1.5969968 -1.031688,-2.3884288 -1.017556,-0.791432 -3.109198,-0.791432 z M 3.1705004,0.5556776 h 7.2924806 q 3.264657,0 5.031247,1.3567406 1.766589,1.3567407 1.766589,3.8582312 0,1.9361819 -0.904494,3.0809318 -0.904493,1.1447499 -2.65695,1.4274038 2.105774,0.452247 3.264657,1.893784 1.173015,1.427404 1.173015,3.575577 0,2.826543 -1.922049,4.367009 -1.922049,1.540466 -5.46936,1.540466 H 3.1705004 Z"
+         id="path9" />
+    </g>
+  </g>
+</svg>

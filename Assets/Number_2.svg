@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="80"
+   height="80"
+   viewBox="0 0 21.166666 21.166667"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="Number_2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="true"
+     showguides="false"
+     units="px"
+     width="80px"
+     inkscape:zoom="2.5722563"
+     inkscape:cx="26.435935"
+     inkscape:cy="62.2022"
+     inkscape:window-width="1920"
+     inkscape:window-height="1003"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid125" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       aria-label="2"
+       transform="scale(1.2748252,0.78442128)"
+       id="text6949"
+       style="font-size:35.5894px;line-height:1.25;stroke-width:0.889738">
+      <path
+         d="M 4.4855384,23.738705 H 16.736773 v 2.954199 H 0.26277258 v -2.954199 q 1.99842832,-2.067939 5.43920052,-5.543466 3.4581498,-3.492905 4.3444089,-4.500808 1.685631,-1.894163 2.345981,-3.197485 0.677728,-1.3207009 0.677728,-2.5892684 0,-2.0679389 -1.459721,-3.3712617 -1.442344,-1.3033228 -3.7709476,-1.3033228 -1.6508755,0 -3.4929051,0.5734621 -1.8246519,0.573462 -3.90996835,1.7377637 V 1.9992809 Q 2.5566207,1.1477766 4.3986503,0.71333572 6.2406798,0.27889478 7.7699119,0.27889478 q 4.0316121,0 6.4297261,2.01580592 2.398114,2.0158059 2.398114,5.3870676 0,1.5987426 -0.608218,3.0410867 -0.590839,1.424966 -2.172204,3.371261 -0.434441,0.503952 -2.763045,2.919444 -2.328603,2.398113 -6.5687466,6.725145 z"
+         id="path9" />
+    </g>
+  </g>
+</svg>
