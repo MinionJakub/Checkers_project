@@ -191,7 +191,7 @@ void  continue_attack(int **board, int row, int column, int legal_attack[][4],in
 
 void promotion(int **board, int size_of_board){
     for (int i = 0; i<size_of_board;i++) if (board[0][i] == -1) board[0][i] = -2;
-    for (int i = 0; i<size_of_board;i++) if (board[size_of_board-1][i] == 1) board[0][i] = 2;
+    for (int i = 0; i<size_of_board;i++) if (board[size_of_board-1][i] == 1) board[size_of_board-1][i] = 2;
 }
 
 void move_action(int **board, int *coordinates){
@@ -288,6 +288,9 @@ void insert_to_dynamic_array(char *array, int *last_element, int *size, char wha
 }
 
 int compare_arrays (char *array, const char *with_what_to_compare, int length){
+    for(int i = 0; i < length;i++){
+        if('a'<= array[i] && array[i] <='z')array[i] = array[i]-'a'+'A';
+    }
     for(int i = 0; i < length; i++){
         if(array[i] != with_what_to_compare[i]) return 0;
     }
@@ -322,12 +325,12 @@ char *read_entry(int *operation){
 char *read_entry_from_text(int *operation,char *text,int last_element){
     if (last_element >= 9 && compare_arrays(text,show_moves,9)){
         *operation = 1;
-        return entry;
+        return text;
     }
     if (last_element >= 9 && compare_arrays(text,surrender,9)){
         *operation = 2;
-        return entry;
+        return text;
     }
     *operation = 3;
-    return entry;
+    return text;
 }

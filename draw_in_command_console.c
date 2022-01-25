@@ -106,7 +106,7 @@ void PvP_console(){
                 while(how_many_attacks != 0){
                     if(how_many_attacks == 1){
                         attack_action(board,legal_attack[0]);
-                        continue_attack(board,action[3],action[2],legal_attack,&how_many_attacks,what_type_of_attack);
+                        continue_attack(board,legal_attack[0][3],legal_attack[0][2],legal_attack,&how_many_attacks,what_type_of_attack);
                     }
                     else{
                         command = read_entry(&operation);
@@ -139,6 +139,7 @@ void PvP_console(){
             break;
         }
         who_is_winner(board,8,&end_the_game);
+        promotion(board,8);
     }
     free(board);
     draw_end(end_the_game);
@@ -230,6 +231,7 @@ void PvComputer_console(){
                 break;
             }
             who_is_winner(board,8,&end_the_game);
+            promotion(board,8);
         }
     }
     free(board);
