@@ -93,8 +93,8 @@ int evaluation_of_move(int **board, int size_of_board, int whose_turn, int enemy
 
 int *bot_make_decision(int **board,int size_of_board,int whose_turn,int enemy_value,int my_value,int deep){
     int *input = malloc(sizeof(int*)*4);
-    int legal_attack[20][4];
-    int legal_move[20][4];
+    int legal_attack[40][4];
+    int legal_move[40][4];
     int how_many_attacking_moves = 0;
     int how_many_moves = 0;
     legal_action(board,legal_attack,legal_move,size_of_board,&how_many_moves,&how_many_attacking_moves,whose_turn);
@@ -185,12 +185,12 @@ int *bot_make_decision(int **board,int size_of_board,int whose_turn,int enemy_va
     int j = 0;
     int losowa = rand()%how_many_the_best_moves;
     losowa = rand()%how_many_the_best_moves;
-    printf("%d ",losowa);
+    //printf("%d ",losowa);
     while(i < losowa-1 || value_table[j] != max_val_for_table){
         if(max_val_for_table == value_table[j])i++;
         j++;
     }
-    printf("%d\n",j);
+    //printf("%d\n",j);
     if(how_many_attacking_moves){
         input[0] = legal_attack[j][0];
         input[1] = legal_attack[j][1];

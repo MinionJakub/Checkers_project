@@ -13,6 +13,7 @@
 
 const int SCREEN_HEIGHT = 800;
 const int SCREEN_WIDTH = 800;
+const int SIZE_OF_FONT = 18;
 
 extern void dynamic_array_of_chars(char *array, int *size);
 
@@ -27,6 +28,7 @@ int game_SDL(int what_type_of_game)
     int how_many_attacks = 0;
     int whose_turn = -1;
     if(time(NULL)%2) whose_turn = 1;
+    int who_sturted_turn = -whose_turn;
     int operation = 0;
     int end_the_game = 0;
     char *command;
@@ -54,7 +56,16 @@ int game_SDL(int what_type_of_game)
         SDL_Quit();
         return 3;
     }
-
+    SDL_Window *moves_Window = SDL_CreateWindow("Legal Moves",50,160,200,250,0);
+    if(!moves_Window){
+        printf("Error of creating the legal move window:%s \n",SDL_GetError());
+    }
+    TTF_Font *font_for_legal_moves = TTF_OpenFont("font.ttf",SIZE_OF_FONT);
+    if(!font_for_legal_moves){
+        printf("Error of reading the font file:%s\n",TTF_GetError());
+    }
+    SDL_Renderer *legal_moves_render = SDL_CreateRenderer(moves_Window,-1,SDL_RENDERER_ACCELERATED);
+    if(!legal_moves_render) printf("Error of creating render for moves:%s\n",SDL_GetError());
     int after_first_loop = 0;
     SDL_Rect pola[64];
     SDL_Rect rect_in_side[64];
@@ -71,7 +82,7 @@ int game_SDL(int what_type_of_game)
     SDL_Texture* letters[8] = {IMG_LoadTexture(mainRenderer,"Assets/Litera_A.svg"),IMG_LoadTexture(mainRenderer,"Assets/Litera_B.svg"),IMG_LoadTexture(mainRenderer,"Assets/Litera_C.svg"),
                                 IMG_LoadTexture(mainRenderer,"Assets/Litera_D.svg"),IMG_LoadTexture(mainRenderer,"Assets/Litera_E.svg"),IMG_LoadTexture(mainRenderer,"Assets/Litera_F.svg"),
                                 IMG_LoadTexture(mainRenderer,"Assets/Litera_G.svg"),IMG_LoadTexture(mainRenderer,"Assets/Litera_H.svg")};
-    while(mainWindow != NULL && !end_the_game){
+    while(mainWindow != NULL && !end_the_game && moves_Window){
         SDL_RenderClear(mainRenderer);
         while(SDL_PollEvent(&event)){
             if(event.type==SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE){
@@ -109,14 +120,14 @@ int game_SDL(int what_type_of_game)
                 rect_in_side[c].w = 45;
                 rect_in_side[c].x = j*80+80+18;
                 rect_in_side[c].y = i*80+18+80;
-                if(board[i][j]== 1)SDL_RenderCopy(mainRenderer,black_pawn,NULL,&rect_in_side[c]);
-                if(board[i][j]== 2)SDL_RenderCopy(mainRenderer,black_king,NULL,&rect_in_side[c]);
-                if(board[i][j]== -1)SDL_RenderCopy(mainRenderer,white_pawn,NULL,&rect_in_side[c]);
-                if(board[i][j]== -2)SDL_RenderCopy(mainRenderer,white_king,NULL,&rect_in_side[c]);
+                if(board[i][j]== 1*who_sturted_turn)SDL_RenderCopy(mainRenderer,black_pawn,NULL,&rect_in_side[c]);
+                if(board[i][j]== 2*who_sturted_turn)SDL_RenderCopy(mainRenderer,black_king,NULL,&rect_in_side[c]);
+                if(board[i][j]== -1*who_sturted_turn)SDL_RenderCopy(mainRenderer,white_pawn,NULL,&rect_in_side[c]);
+                if(board[i][j]== -2*who_sturted_turn)SDL_RenderCopy(mainRenderer,white_king,NULL,&rect_in_side[c]);
                 if(board[i][j])SDL_RenderDrawRect(mainRenderer,&rect_in_side[c]);
             }
         }
-        SDL_SetRenderDrawColor(mainRenderer,218,165,32,SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(mainRenderer,211,211,211,SDL_ALPHA_OPAQUE);
         for(int i = 0; i < 8;i++){
             rect_numbers[i].h = 50;
             rect_numbers[i].w = 50;
@@ -136,10 +147,60 @@ int game_SDL(int what_type_of_game)
 
         legal_action(board,legal_attack,legal_move,8,&how_many_moves,&how_many_attacks,whose_turn);
 
+        SDL_RenderClear(legal_moves_render);
+        SDL_SetRenderDrawColor(legal_moves_render,0xff,0xff,0xff,SDL_ALPHA_OPAQUE);
+        if (how_many_attacks){
+            for(int i = 0; i < how_many_attacks; i++){
+                SDL_Texture* Uppet_text_texture;
+                SDL_Surface* Upper_text_print;
+                SDL_Color color = {0,0,0,SDL_ALPHA_OPAQUE};
+                char ruch[4] = {0};
+                ruch[0] = 'A'+legal_attack[i][0];
+                ruch[1] = '8'-legal_attack[i][1];
+                ruch[2] = 'A'+legal_attack[i][2];
+                ruch[3] = '8'-legal_attack[i][3];
+                Upper_text_print = TTF_RenderText_Solid(font_for_legal_moves,ruch,color);
+                Uppet_text_texture = SDL_CreateTextureFromSurface(legal_moves_render,Upper_text_print);
+                SDL_Rect Upper;
+                Upper.h = Upper_text_print->h;
+                Upper.w = Upper_text_print->w;
+                Upper.x = 0;
+                Upper.y = SIZE_OF_FONT*i;
+                SDL_RenderCopy(legal_moves_render,Uppet_text_texture,NULL,&Upper);
+                SDL_DestroyTexture(Uppet_text_texture);
+                SDL_FreeSurface(Upper_text_print);
+            }
+        }
+        if(how_many_moves && !how_many_attacks){
+            SDL_RenderClear(legal_moves_render);
+            SDL_SetRenderDrawColor(legal_moves_render,0xff,0xff,0xff,SDL_ALPHA_OPAQUE);
+            for(int i = 0; i < how_many_moves; i++){
+                SDL_Texture* Uppet_text_texture;
+                SDL_Surface* Upper_text_print;
+                SDL_Color color = {0,0,0,SDL_ALPHA_OPAQUE};
+                char ruch[4] = {0};
+                ruch[0] = 'A'+legal_move[i][0];
+                ruch[1] = '8'-legal_move[i][1];
+                ruch[2] = 'A'+legal_move[i][2];
+                ruch[3] = '8'-legal_move[i][3];
+                Upper_text_print = TTF_RenderText_Solid(font_for_legal_moves,ruch,color);
+                Uppet_text_texture = SDL_CreateTextureFromSurface(legal_moves_render,Upper_text_print);
+                SDL_Rect Upper;
+                Upper.h = Upper_text_print->h;
+                Upper.w = Upper_text_print->w;
+                Upper.x = 0;
+                Upper.y = SIZE_OF_FONT*i;
+                SDL_RenderCopy(legal_moves_render,Uppet_text_texture,NULL,&Upper);
+                SDL_DestroyTexture(Uppet_text_texture);
+                SDL_FreeSurface(Upper_text_print);
+            }
+        }
+        SDL_RenderPresent(legal_moves_render);
 
-        SDL_SetRenderDrawColor(mainRenderer,218,165,32,SDL_ALPHA_OPAQUE);
+
+        SDL_SetRenderDrawColor(mainRenderer,211,211,211,SDL_ALPHA_OPAQUE);
         SDL_RenderPresent( mainRenderer );
-        if(what_type_of_game)SDL_Delay(2000);
+        if(what_type_of_game)SDL_Delay(1000);
 
         int size = 5;
         char *text = malloc(sizeof(char*)*size);
@@ -155,7 +216,7 @@ int game_SDL(int what_type_of_game)
             if(!font){
                 printf("Failed to load font: %s\n",TTF_GetError());
             }
-            SDL_Window* InputWindow = SDL_CreateWindow("Input",100,100,500,100,0);
+            SDL_Window* InputWindow = SDL_CreateWindow("Input",50,50,700,80,0);
             int ending_loop = 0;
             if(!InputWindow){
                 printf("Error of creating Input Window: %s\n",SDL_GetError());
@@ -216,6 +277,7 @@ int game_SDL(int what_type_of_game)
                             }
                             else if(event.type == SDL_KEYDOWN){
                                 char pom = (char) event.key.keysym.sym;
+                                if('a'<=pom && pom <= 'z')pom= pom-'a'+'A';
                                 if(event.key.keysym.sym == '\n'){
                                     SDL_DestroyRenderer(InputRenderer);
                                     SDL_DestroyWindow(InputWindow);
@@ -241,7 +303,7 @@ int game_SDL(int what_type_of_game)
                             SDL_FreeSurface(text_print);
                         }
                         SDL_RenderPresent(InputRenderer);
-                        SDL_Delay(2000);
+                        SDL_Delay(1000);
                     }
                 }
             }
@@ -273,7 +335,7 @@ int game_SDL(int what_type_of_game)
                             if(!font){
                                 printf("Failed to load font: %s\n",TTF_GetError());
                             }
-                            SDL_Window* InputWindow = SDL_CreateWindow("Input",100,100,500,100,0);
+                            SDL_Window* InputWindow = SDL_CreateWindow("Input",50,50,700,80,0);
                             int ending_loop = 0;
 
                             if(!InputWindow){
@@ -334,6 +396,7 @@ int game_SDL(int what_type_of_game)
                                             }
                                             else if(event.type == SDL_KEYDOWN){
                                                 char pom = (char) event.key.keysym.sym;
+                                                if('a'<=pom && pom <= 'z')pom= pom-'a'+'A';
                                                 if(event.key.keysym.sym == '\n'){
                                                     SDL_DestroyRenderer(InputRenderer);
                                                     SDL_DestroyWindow(InputWindow);
@@ -359,7 +422,7 @@ int game_SDL(int what_type_of_game)
                                             SDL_FreeSurface(text_print);
                                         }
                                         SDL_RenderPresent(InputRenderer);
-                                        SDL_Delay(2000);
+                                        SDL_Delay(1000);
                                     }
                                 }
                             }
@@ -375,7 +438,7 @@ int game_SDL(int what_type_of_game)
         }
         if(whose_turn == 1 && !what_type_of_game){
             legal_action(board,legal_attack,legal_move,8,&how_many_moves,&how_many_attacks,whose_turn);
-            action = bot_make_decision(board,8,whose_turn,-1,1,10);
+            action = bot_make_decision(board,8,whose_turn,-1,1,9);
             if(how_many_attacks){
                 attack_action(board,action);
                 int what_type_of_attack = -1;
@@ -438,14 +501,14 @@ int game_SDL(int what_type_of_game)
                 rect_in_side[c].w = 45;
                 rect_in_side[c].x = j*80+80+18;
                 rect_in_side[c].y = i*80+18+80;
-                if(board[i][j]== 1)SDL_RenderCopy(mainRenderer,black_pawn,NULL,&rect_in_side[c]);
-                if(board[i][j]== 2)SDL_RenderCopy(mainRenderer,black_king,NULL,&rect_in_side[c]);
-                if(board[i][j]== -1)SDL_RenderCopy(mainRenderer,white_pawn,NULL,&rect_in_side[c]);
-                if(board[i][j]== -2)SDL_RenderCopy(mainRenderer,white_king,NULL,&rect_in_side[c]);
+                if(board[i][j]== 1*who_sturted_turn)SDL_RenderCopy(mainRenderer,black_pawn,NULL,&rect_in_side[c]);
+                if(board[i][j]== 2*who_sturted_turn)SDL_RenderCopy(mainRenderer,black_king,NULL,&rect_in_side[c]);
+                if(board[i][j]== -1*who_sturted_turn)SDL_RenderCopy(mainRenderer,white_pawn,NULL,&rect_in_side[c]);
+                if(board[i][j]== -2*who_sturted_turn)SDL_RenderCopy(mainRenderer,white_king,NULL,&rect_in_side[c]);
                 if(board[i][j])SDL_RenderDrawRect(mainRenderer,&rect_in_side[c]);
             }
         }
-        SDL_SetRenderDrawColor(mainRenderer,218,165,32,SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(mainRenderer,211,211,211,SDL_ALPHA_OPAQUE);
         for(int i = 0; i < 8;i++){
             rect_numbers[i].h = 50;
             rect_numbers[i].w = 50;
@@ -466,11 +529,38 @@ int game_SDL(int what_type_of_game)
         legal_action(board,legal_attack,legal_move,8,&how_many_moves,&how_many_attacks,whose_turn);
 
 
-        SDL_SetRenderDrawColor(mainRenderer,218,165,32,SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(mainRenderer,211,211,211,SDL_ALPHA_OPAQUE);
         SDL_RenderPresent( mainRenderer );
     }
     SDL_DestroyRenderer(mainRenderer);
     SDL_DestroyWindow(mainWindow);
+    /*SDL_Window *ending_window = SDL_CreateWindow("Ending Screen",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,200,50,0);
+    TTF_Font *ending_font = TTF_OpenFont("font.ttf",32);
+    SDL_Renderer *ending_render = SDL_CreateRenderer(ending_window,-1,SDL_RENDERER_ACCELERATED);
+    if(ending_render && ending_window){
+        SDL_RenderClear(ending_render);
+        SDL_SetRenderDrawColor(ending_render,0xff,0xff,0xff,SDL_ALPHA_OPAQUE);
+        SDL_Texture* Uppet_text_texture;
+        SDL_Surface* Upper_text_print;
+        SDL_Color color = {0,0,0,SDL_ALPHA_OPAQUE};
+        if(end_the_game == 1)Upper_text_print = TTF_RenderText_Solid(ending_font,"The winner is upper player",color);
+        else if (end_the_game == -1) TTF_RenderText_Solid(ending_font,"The winner is bottom player",color);
+        else TTF_RenderText_Solid(ending_font,"Draw",color);
+        Uppet_text_texture = SDL_CreateTextureFromSurface(ending_render,Upper_text_print);
+        SDL_Rect Upper;
+        Upper.h = Upper_text_print->h;
+        Upper.w = Upper_text_print->w;
+        Upper.x = 0;
+        Upper.y = 0;
+        SDL_RenderCopy(ending_render,Uppet_text_texture,NULL,&Upper);
+        SDL_DestroyTexture(Uppet_text_texture);
+        SDL_FreeSurface(Upper_text_print);
+        SDL_SetRenderDrawColor(ending_render,0xff,0xff,0xff,SDL_ALPHA_OPAQUE);
+        SDL_RenderPresent(ending_render);
+        SDL_Delay(3000);
+        SDL_DestroyRenderer(ending_render);
+        SDL_DestroyWindow(ending_window);
+    }*/
     SDL_Quit();
     free(board);
     return 0;;

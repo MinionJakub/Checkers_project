@@ -70,7 +70,7 @@ void draw_end(int winner){
     else if(winner < 0)printf("Bottom Player is a winner");
     else printf("Remis\n");
     /*#ifdef __linux__
-        system("sleep 1");
+        system("sleep 2");
     #endif // __linux__*/
 }
 
@@ -143,7 +143,7 @@ void PvP_console(){
     }
     free(board);
     draw_end(end_the_game);
-    exit (0);
+    exit(0);
 }
 
 void PvComputer_console(){
@@ -164,7 +164,7 @@ void PvComputer_console(){
         //if(whose_turn == 1 && operation != 1)printf("Move has upper player\n");
         if(whose_turn == 1){
             legal_action(board,legal_attack,legal_move,8,&how_many_moves,&how_many_attacks,whose_turn);
-            action = bot_make_decision(board,8,whose_turn,-1,1,10);
+            action = bot_make_decision(board,8,whose_turn,-1,1,9);
             if(how_many_attacks){
                 attack_action(board,action);
                 int what_type_of_attack = -1;
@@ -236,5 +236,5 @@ void PvComputer_console(){
     }
     free(board);
     draw_end(end_the_game);
-    exit (0);
+    exit(0);
 }
