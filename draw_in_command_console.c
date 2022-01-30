@@ -69,9 +69,10 @@ void draw_end(int winner){
     if(winner > 0)printf("Upper player is a winner");
     else if(winner < 0)printf("Bottom Player is a winner");
     else printf("Remis\n");
-    /*#ifdef __linux__
-        system("sleep 2");
-    #endif // __linux__*/
+    #ifdef __linux__
+        system("sleep 1");
+    #endif // __linux__
+    return;
 }
 
 void PvP_console(){

@@ -18,8 +18,14 @@ int main()
         printf("(3)With use of SDL two players\n");
         printf("(4)With use of SDL player vs computer\n");
         printf("(0)Turn off program\n");
-        if(mode == 1) PvP_console();
-        if(mode == 2) PvComputer_console();
+        if(mode == 1) {
+            PvP_console();
+            mode = -1;
+        }
+        if(mode == 2) {
+            PvComputer_console();
+            mode = -1;
+        }
         if(mode == 3) game_SDL(1);
         if(mode == 4) game_SDL(0);
         scanf("%d",&mode);

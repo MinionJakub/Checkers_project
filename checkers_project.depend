@@ -20,7 +20,7 @@
 	<stdlib.h>
 	"checkers_rules_and_logic.h"
 
-1643384482 source:/home/minion/Documents/checkers_project/main.c
+1643558140 source:/home/minion/Documents/checkers_project/main.c
 	<stdio.h>
 	<stdlib.h>
 	"draw_in_command_console.h"
@@ -37,7 +37,7 @@
 	<stdlib.h>
 	"checkers_rules_and_logic.h"
 
-1643193589 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
+1643559106 source:/home/minion/Documents/checkers_project/draw_in_command_console.c
 	<stdio.h>
 	<stdlib.h>
 	"draw_in_command_console.h"
@@ -55,7 +55,7 @@
 
 1642684511 /home/minion/Documents/checkers_project/bot.h
 
-1643458072 source:/home/minion/Documents/checkers_project/draw_in_SDL.c
+1643458992 source:/home/minion/Documents/checkers_project/draw_in_SDL.c
 	<stdio.h>
 	<stdlib.h>
 	"checkers_rules_and_logic.h"

@@ -313,6 +313,7 @@ int game_SDL(int what_type_of_game)
         if(command != NULL && after_first_loop && (whose_turn == -1 || what_type_of_game)){
             if(operation == 2){
                 end_the_game =-whose_turn;
+                goto end_of_game;
                 break;
             }
             else{
@@ -436,6 +437,10 @@ int game_SDL(int what_type_of_game)
                 }
             }
         }
+        if(operation == 2){
+            end_the_game = -whose_turn;
+            goto end_of_game;
+        }
         if(whose_turn == 1 && !what_type_of_game){
             legal_action(board,legal_attack,legal_move,8,&how_many_moves,&how_many_attacks,whose_turn);
             action = bot_make_decision(board,8,whose_turn,-1,1,9);
@@ -532,19 +537,26 @@ int game_SDL(int what_type_of_game)
         SDL_SetRenderDrawColor(mainRenderer,211,211,211,SDL_ALPHA_OPAQUE);
         SDL_RenderPresent( mainRenderer );
     }
-    SDL_DestroyRenderer(mainRenderer);
+    end_of_game: SDL_DestroyRenderer(mainRenderer);
     SDL_DestroyWindow(mainWindow);
-    /*SDL_Window *ending_window = SDL_CreateWindow("Ending Screen",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,200,50,0);
+    SDL_Window *ending_window = SDL_CreateWindow("Ending Screen",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,500,50,0);
     TTF_Font *ending_font = TTF_OpenFont("font.ttf",32);
-    SDL_Renderer *ending_render = SDL_CreateRenderer(ending_window,-1,SDL_RENDERER_ACCELERATED);
+    SDL_Renderer *ending_render;
+    if(ending_window) ending_render = SDL_CreateRenderer(ending_window,-1,SDL_RENDERER_ACCELERATED);
     if(ending_render && ending_window){
         SDL_RenderClear(ending_render);
         SDL_SetRenderDrawColor(ending_render,0xff,0xff,0xff,SDL_ALPHA_OPAQUE);
+        SDL_Rect end_rect;
+        end_rect.h = 50;
+        end_rect.w = 500;
+        end_rect.x = 0;
+        end_rect.y = 0;
+        SDL_RenderFillRect(ending_render,&end_rect);
         SDL_Texture* Uppet_text_texture;
         SDL_Surface* Upper_text_print;
         SDL_Color color = {0,0,0,SDL_ALPHA_OPAQUE};
         if(end_the_game == 1)Upper_text_print = TTF_RenderText_Solid(ending_font,"The winner is upper player",color);
-        else if (end_the_game == -1) TTF_RenderText_Solid(ending_font,"The winner is bottom player",color);
+        else if (end_the_game == -1)Upper_text_print =  TTF_RenderText_Solid(ending_font,"The winner is bottom player",color);
         else TTF_RenderText_Solid(ending_font,"Draw",color);
         Uppet_text_texture = SDL_CreateTextureFromSurface(ending_render,Upper_text_print);
         SDL_Rect Upper;
@@ -560,7 +572,7 @@ int game_SDL(int what_type_of_game)
         SDL_Delay(3000);
         SDL_DestroyRenderer(ending_render);
         SDL_DestroyWindow(ending_window);
-    }*/
+    }
     SDL_Quit();
     free(board);
     return 0;;
