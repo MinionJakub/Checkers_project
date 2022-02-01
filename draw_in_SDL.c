@@ -1,3 +1,5 @@
+//Jakub Chomiczewski Projekt C
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "checkers_rules_and_logic.h"
@@ -19,7 +21,7 @@ extern void dynamic_array_of_chars(char *array, int *size);
 
 extern void insert_to_dynamic_array(char *array, int *last_element, int *size, char what_to_insert);
 
-int game_SDL(int what_type_of_game)
+int game_SDL(int what_type_of_game, int easter_egg)
 {
     int **board = initiate();
     int legal_attack[50][4];
@@ -76,6 +78,12 @@ int game_SDL(int what_type_of_game)
     SDL_Texture* black_pawn = IMG_LoadTexture(mainRenderer,"Assets/Chess_prt45.svg");
     SDL_Texture* white_king = IMG_LoadTexture(mainRenderer,"Assets/Chess_klt45.svg");
     SDL_Texture* black_king = IMG_LoadTexture(mainRenderer,"Assets/Chess_krt45.svg");
+    if(easter_egg){
+        white_pawn = IMG_LoadTexture(mainRenderer,"Assets/corgie_red_man.jpg");
+        black_pawn = IMG_LoadTexture(mainRenderer,"Assets/black_corgie_man.jpg");
+        white_king = IMG_LoadTexture(mainRenderer,"Assets/corgie_red_king.jpg");
+        black_king = IMG_LoadTexture(mainRenderer,"Assets/black_corgie_king.jpg");
+    }
     SDL_Texture* numbers[8] = {IMG_LoadTexture(mainRenderer,"Assets/Number_1.svg"),IMG_LoadTexture(mainRenderer,"Assets/Number_2.svg"),IMG_LoadTexture(mainRenderer,"Assets/Number_3.svg"),
                                 IMG_LoadTexture(mainRenderer,"Assets/Number_4.svg"),IMG_LoadTexture(mainRenderer,"Assets/Number_5.svg"),IMG_LoadTexture(mainRenderer,"Assets/Number_6.svg"),
                                 IMG_LoadTexture(mainRenderer,"Assets/Number_7.svg"),IMG_LoadTexture(mainRenderer,"Assets/Number_8.svg")};

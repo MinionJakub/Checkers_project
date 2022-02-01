@@ -1,3 +1,5 @@
+//Jakub Chomiczewski Projekt C
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "draw_in_command_console.h"
@@ -26,8 +28,11 @@ int main()
             PvComputer_console();
             mode = -1;
         }
-        if(mode == 3) game_SDL(1);
-        if(mode == 4) game_SDL(0);
+        if(mode == 3) game_SDL(1,0);
+        if(mode == 4) game_SDL(0,0);
+
+        if(mode == 6) game_SDL(1,1);
+        if(mode == 7) game_SDL(0,1);
         scanf("%d",&mode);
     }
     exit(0);

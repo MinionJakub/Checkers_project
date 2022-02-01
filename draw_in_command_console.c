@@ -1,3 +1,5 @@
+//Jakub Chomiczewski Projekt C
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "draw_in_command_console.h"

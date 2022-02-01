@@ -1,3 +1,5 @@
+//Jakub Chomiczewski Projekt C
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "checkers_rules_and_logic.h"
