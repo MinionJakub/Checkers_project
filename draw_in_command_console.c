@@ -15,7 +15,7 @@
 void draw_map_of_game(int **map_of_game,int length_of_map, int size_of_line){
     #ifdef __linux__
         system("clear");
-        system("gsettings set org.gnome.desktop.interface text-scaling-factor 2");
+        //system("gsettings set org.gnome.desktop.interface text-scaling-factor 2");
     #endif // __linux__*/
     for (int i = 0; i < length_of_map; i++){
         printf("%d ",8-i);
@@ -63,7 +63,7 @@ void show_legal_moves(int legal_move[][4], int legal_attack[][4],int what_number
 void draw_end(int winner){
      #ifdef __linux__
         system("clear");
-        system("gsettings reset org.gnome.desktop.interface text-scaling-factor");
+        //system("gsettings reset org.gnome.desktop.interface text-scaling-factor");
     #endif // __linux_*/
     //printf("%d",winner);
     if(winner > 0)printf("Upper player is a winner");

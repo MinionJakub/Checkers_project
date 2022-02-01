@@ -55,7 +55,7 @@
 
 1642684511 /home/minion/Documents/checkers_project/bot.h
 
-1643458992 source:/home/minion/Documents/checkers_project/draw_in_SDL.c
+1643560532 source:/home/minion/Documents/checkers_project/draw_in_SDL.c
 	<stdio.h>
 	<stdlib.h>
 	"checkers_rules_and_logic.h"

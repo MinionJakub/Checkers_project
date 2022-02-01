@@ -1,0 +1,3 @@
+#!/bin/bash
+gcc -o checkers_project  draw_in_SDL.c checkers_rules_and_logic.c bot.c main.c draw_in_command_console.c -lSDL2 -lSDL2_image -lSDL2_ttf -lm
+
