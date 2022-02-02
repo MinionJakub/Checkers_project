@@ -1,0 +1,2 @@
+!#/bin/bash
+gcc -o checkers_without_SDL main_without_sdl.c bot.c draw_in_command_console.c checkers_rules_and_logic.c
